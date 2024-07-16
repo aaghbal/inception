@@ -115,5 +115,5 @@ Containerization is a lightweight form of virtualization that allows application
 
 Virtualization and containerization are two technologies used to create isolated environments for running applications. While both serve the purpose of isolating applications to ensure they run consistently across different environments, they do so in different ways. Here’s a comparison to highlight their differences and respective benefits:
 
-![vertualization vs containerization](/Users/aaghbal/Desktop/inception/VMs_vs_Cont.png)
+![vertualization vs containerization](https://i.postimg.cc/76J4VjhS/VMs-vs-Cont.png)
 
