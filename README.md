@@ -245,3 +245,28 @@ Docker images use a union file system to manage image layers. Each layer represe
 
 - **Reusability:** Layers can be reused across multiple images, saving space and reducing build time.
 - **Efficiency:** Only the layers that have changed need to be pulled or pushed, making operations faster.
+
+> **Volumes**
+
+**Docker Volumes** are a feature used to persist data generated and used by Docker containers. They are designed to be a way for Docker containers to store data outside of their file system, which gets destroyed when the container is removed. Volumes are the preferred mechanism for persisting data because they are managed by Docker and are more performant than bind mounts.
+
+#### Key Characteristics of Docker Volumes
+
+1. **Managed by Docker:** Docker handles the creation, management, and cleanup of volumes.
+
+2. **Persist Data:** Volumes retain data across container restarts and removals.
+
+3. **Share Data:** Volumes can be shared between multiple containers.
+
+4. **Decouple Data from Container Lifecycle:** Ensures that data is not tied to the lifecycle of a container, allowing for better data integrity and portability.
+
+#### Types of Docker Volumes
+
+1. **Anonymous Volumes:** Created without a name, used for temporary data that doesn't need to be persisted beyond the container's life.
+
+2. **Named Volumes:** Created with a specific name, used for data that should persist across container lifecycles.
+
+
+
+
+
