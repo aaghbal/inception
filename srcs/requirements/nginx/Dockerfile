@@ -4,6 +4,8 @@ RUN apt update -y && apt upgrade -y && apt install -y nginx
 
 COPY ./conf/nginx.conf /etc/nginx
 
+COPY ./tools/portfolio /usr/share/nginx/html
+
 RUN mkdir /etc/nginx/tls && apt install openssl
 
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
