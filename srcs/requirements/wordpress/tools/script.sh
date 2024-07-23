@@ -1,11 +1,4 @@
-
-DB_NAME="wp_database"
-DB_USER="abdo"
-DB_PASS="1234"
-
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-
-chmod +x wp-cli.phar
 
 chmod +x wp-cli.phar
 
@@ -17,7 +10,12 @@ cd /var/www/html/wp-cli
 
 wp core download --allow-root
 
-wp config create --allow-root --dbname=${DB_NAME} --dbuser=${DB_USER} --dbpass=${DB_PASS} --dbhost=localhost
+cp wp-config-sample.php wp-config.php
 
+wp config set DB_HOST mariadb --allow-root
+wp config set DB_NAME dd --allow-root
+wp config set DB_USER abdo --allow-root
+wp config set DB_PASSWORD 1234 --allow-root
 
+wp core install --allow-root --url=aaghbal.42.fr --title=my_inception --admin_user=wp_abdo   --admin_email=abdo@example.com 
 

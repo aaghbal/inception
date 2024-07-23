@@ -1,0 +1,47 @@
+
+services:
+  nginx:
+    build:
+      context: ./requirements/nginx
+    image: nginx:v1
+    container_name: nginx
+    ports:
+        - "443:443"
+    volumes:
+        - /etc/nginx/nginx.conf:/home/login/data
+    restart: always 
+    networks:
+    - inception
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+    image: mariadb:v1
+    container_name: mariadb
+    expose:
+        - "3306"
+    env_file: .env
+    restart: always
+    networks:
+    - inception
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+    image: wordpress:v1
+    container_name: wordpress
+    expose:
+        - "9000"
+    env_file: .env
+    volumes:
+        - /etc/nginx/nginx.conf:/home/login/data
+    networks:
+    - inception
+    depends_on:
+      - mariadb
+    restart: always
+volumes:
+  db_data: {}
+
+networks:
+  inception:
+    name: inception
+    driver: bridge
