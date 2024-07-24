@@ -7,8 +7,8 @@ services:
     container_name: nginx
     ports:
         - "443:443"
-    volumes:
-        - /etc/nginx/nginx.conf:/home/login/data
+    # volumes:
+    #     - /home/aaghbal/data:/var/www/wordpress
     restart: always 
     networks:
     - inception
@@ -21,6 +21,8 @@ services:
         - "3306"
     env_file: .env
     restart: always
+    volumes:
+        - /home/aaghbal/db:/var/lib/mysql
     networks:
     - inception
   wordpress:
@@ -31,15 +33,16 @@ services:
     expose:
         - "9000"
     env_file: .env
-    volumes:
-        - /etc/nginx/nginx.conf:/home/login/data
     networks:
     - inception
     depends_on:
       - mariadb
     restart: always
+    volumes:
+        - /home/aaghbal/data:/var/www/wordpress
 volumes:
-  db_data: {}
+  data:
+  db:
 
 networks:
   inception:
