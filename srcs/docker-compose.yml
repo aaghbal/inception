@@ -21,8 +21,8 @@ services:
         - "3306"
     env_file: .env
     restart: always
-    volumes:
-        - /home/aaghbal/db:/var/lib/mysql
+    # volumes:
+    #     - /home/aaghbal/db:/var/lib/mysql
     networks:
     - inception
   wordpress:
@@ -38,8 +38,8 @@ services:
     depends_on:
       - mariadb
     restart: always
-    volumes:
-        - /home/aaghbal/data:/var/www/wordpress
+    # volumes:
+    #     - /home/aaghbal/data:/var/www/wordpress
 volumes:
   data:
   db:
