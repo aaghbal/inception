@@ -9,4 +9,5 @@ mysql -u root <<-DEL
         FLUSH PRIVILEGES;
 DEL
 service mariadb stop
+
 exec mysqld_safe --bind-address=0.0.0.0
