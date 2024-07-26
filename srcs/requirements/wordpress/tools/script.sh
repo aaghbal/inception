@@ -13,6 +13,8 @@ wp core download --allow-root
 
 
 wp config create  --dbname=wp_database --dbuser=aaghbal --dbhost=mariadb --dbpass=1234 --allow-root
-wp core install --allow-root --url=aaghbal.42.fr --title=my_inception --admin_user=wp_abdo   --admin_email=abdo@example.com 
+wp core install --allow-root --url=aaghbal.42.fr --title=my_inception --admin_user=wp_abdo --admin_password=AghbalAbdellah12@  --admin_email=abdo@example.com 
 
-tail -f /dev/null
+service php7.4-fpm stop
+
+exec php-fpm7.4 -F
