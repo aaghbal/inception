@@ -1,5 +1,6 @@
 
 services:
+
   nginx:
     build:
       context: ./requirements/nginx
@@ -12,6 +13,8 @@ services:
     restart: always 
     networks:
     - inception
+  
+  
   mariadb:
     build:
       context: ./requirements/mariadb
@@ -25,6 +28,8 @@ services:
         - db:/var/lib/mysql
     networks:
     - inception
+
+
   wordpress:
     build:
       context: ./requirements/wordpress
@@ -40,6 +45,16 @@ services:
     restart: always
     volumes:
         - data:/var/www/wordpress
+
+
+  website:
+    build:
+      context: ./requirements/bonus/website
+    image: website:v1
+    container_name: website
+    ports:
+        - "1000:443"
+    restart: always
 
 volumes:
   data:

@@ -5,15 +5,25 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 
 sleep 5
+
 mkdir /var/www/wordpress
 
 cd /var/www/wordpress
+
 wp core download --allow-root
 
 
+wp config create  --dbname=$DATABASE_NAME --dbuser=$DATABASE_USER \
+                    --dbhost=$DATABASE_HOST --dbpass=$DATABASE_PASS \
+                        --allow-root
 
-wp config create  --dbname=wp_database --dbuser=aaghbal --dbhost=mariadb --dbpass=1234 --allow-root
-wp core install --allow-root --url=aaghbal.42.fr --title=my_inception --admin_user=wp_abdo --admin_password=AghbalAbdellah12@  --admin_email=abdo@example.com 
+wp core install --url=$URL --title=$TITLE \
+                --admin_user=$ADMIN_USER --admin_password=$ADMIN_PASS \
+                --admin_email=$ADMIN_EMAIL --allow-root
+
+
+wp user create $EDITOR_USER $EDITOR_EMAIL --role=editor --user_pass=$EDITOR_PASS --allow-root
+
 
 service php7.4-fpm stop
 
