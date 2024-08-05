@@ -9,7 +9,7 @@ services:
     ports:
         - "443:443"
     volumes:
-        - data:/var/www/wordpress
+        - wp_nginx:/var/www/wordpress
     restart: always 
     networks:
     - inception
@@ -25,7 +25,7 @@ services:
     env_file: .env
     restart: always
     volumes:
-        - db:/var/lib/mysql
+        - database:/var/lib/mysql
     networks:
     - inception
 
@@ -44,7 +44,7 @@ services:
       - mariadb
     restart: always
     volumes:
-        - data:/var/www/wordpress
+        - wp_nginx:/var/www/wordpress
 
 
   website:
@@ -53,24 +53,25 @@ services:
     image: website:v1
     container_name: website
     ports:
-        - "1000:443"
+        - "1000:1000"
     restart: always
 
+  
 volumes:
-  data:
+  wp_nginx:
     name: wp_ngi
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/aaghbal/data 
-  db:
+      device: /home/aaghbal/data/wp_nginx
+  database:
     name: mariadb
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/aaghbal/db
+      device: /home/aaghbal/data/mariadb
 
 networks:
   inception:

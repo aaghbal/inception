@@ -25,6 +25,4 @@ wp core install --url=$URL --title=$TITLE \
 wp user create $EDITOR_USER $EDITOR_EMAIL --role=editor --user_pass=$EDITOR_PASS --allow-root
 
 
-service php7.4-fpm stop
-
 exec php-fpm7.4 -F
